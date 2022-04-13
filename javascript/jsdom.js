@@ -6,6 +6,7 @@ const cargarTabla = document.querySelector ('#tablaSucursal')
 const productoEstrella = document.querySelector ('#productoEstella')
 const vendedorEstrella = document.querySelector ('#vendedorEstrella')
 const tablaVentas = document.querySelector ('#tablaVentas')
+const guardar = document.querySelector ('#guardar')
 
 
 
@@ -16,6 +17,15 @@ btnNuevaVenta.addEventListener('click', () =>{
     nuevaVenta.style.display = "block"
 }
 )
+
+//Guardar nueva venta 
+
+guardar.addEventListener ('click', (e) =>{
+    e.preventDefault ();
+    nuevaVenta.style.display = "none"
+})
+
+
 
 //Btn cancelar todas las modales 
 
