@@ -18,15 +18,6 @@ btnNuevaVenta.addEventListener('click', () =>{
 }
 )
 
-//Guardar nueva venta 
-
-guardar.addEventListener ('click', (e) =>{
-    e.preventDefault ();
-    nuevaVenta.style.display = "none"
-})
-
-
-
 //Btn cancelar todas las modales 
 
 btnCancelar.addEventListener('click', () =>{
@@ -62,7 +53,7 @@ const tablaDeVentas=()=>{
     for(let i = 0; i < ventas.length; i++){
         const filasTabla=document.createElement('tr')
         tablaVentas.appendChild(filasTabla);
-            filasTabla.innerHTML = `<td>${ventas[i].fecha}</td>` + `<td>${ventas[i].nombreVendedora}</td>` + `<td>${ventas[i].componentes}</td>` + `<td>${ventas[i].sucursal}</td>` + `<td>$${precioMaquina(ventas[i].componentes)}</td>` + `<td><button id="${i}" class="btnicon edit">&nbsp;<i class="fas fa-edit"></i>&nbsp;</button><button id="${i}" class="btnicon cancel"><i class="fas fa-trash-alt"></i></button></td>`
+            filasTabla.innerHTML = `<td>${ventas[i].fecha.toLocaleDateString()}</td>` + `<td>${ventas[i].nombreVendedora}</td>` + `<td>${ventas[i].componentes}</td>` + `<td>${ventas[i].sucursal}</td>` + `<td>$${precioMaquina(ventas[i].componentes)}</td>` + `<td><button id="${i}" class="btnicon edit">&nbsp;<i class="fas fa-edit"></i>&nbsp;</button><button id="${i}" class="btnicon cancel"><i class="fas fa-trash-alt"></i></button></td>`
     }
     tablaVentasSucursal()
     cargaMejorVendedoraProducto()
@@ -70,11 +61,9 @@ const tablaDeVentas=()=>{
 tablaDeVentas()
 
 
+
 // Borrar los datos 
 
 
 /* Solo dios sabe como lo voy a logar */
-
-
-
 
