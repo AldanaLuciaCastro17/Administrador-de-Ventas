@@ -1,0 +1,93 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(245, 244, 244);
+    font-family: Arial, Helvetica, sans-serif;
+}
+h3{
+    color: white;
+    background-color: rgb(18, 18, 54);
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+    margin-top: 0px;   
+}
+h1{
+    margin-left: 10px;
+}
+p{
+    margin: 10px;
+    padding: 5px;    
+}
+.container{
+    display: flex;
+    margin: 50px;
+}
+.div{
+    background-color: white;
+    border-radius: 10px;
+}
+.sucursal-reporte{
+    width: 50%;
+    margin: 5px;
+}
+.ventas{
+    width: 100%;
+    margin: 3px;
+}
+.btnNuevaVenta{
+    float: right;
+    width: 150px;
+    height: 30px;
+    background-color: white;
+    border-radius: 8px;
+    border: none;
+    color: rgb(18, 18, 54);
+    font-weight: bold;
+    
+}
+table{
+    border: none;
+    width: 95%;
+    margin: auto
+}
+td, th{
+    border-bottom: 2px solid rgb(219, 218, 218);
+    text-align: left;
+    padding: 8px;
+    height: 25px;
+    font-weight: 600;
+}
+.container-modal{
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    display: none;
+}
+.modal{
+    width: 400px;
+    margin: 10% auto;
+}
+.selects{
+    margin-left: 15px;
+    width: 80%;
+    height: 40px;    
+}
+.componentes {
+    height: 80px;
+}
+.btns{
+    margin: 10px;
+}
+.btn{
+    margin: 2px;
+    height: 28px;
+    color: rgb(18, 18, 54);
+}

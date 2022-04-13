@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de ventas</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+
+    <!--Sucursal / Reporte-->
+
+    <div class="container">
+        <div class=" div sucursal-reporte">
+            
+            <h3>Ventas por sucursal</h3>
+
+            <table class="tabla-estadisticas">
+                <thead>
+                    <tr>
+                        <th class="itemsucursal">Sucursal</th>
+                        <th class="itemtotalVentas">Total de ventas</th>
+                    </tr>
+
+                </thead>
+                <tbody id="tablaSucursal"></tbody>
+            </table>
+
+        </div>
+        
+        <div class="div sucursal-reporte">
+            <h3>Reportes</h3>
+            <p class="productoEstella">Productos estrellas:</p>
+            <p class="vendedorEstrella">Vendedor que mas ingresos genero:</p>
+        </div>
+    </div>
+
+    <!--Ventas-->
+
+    <div class="container">
+        <div class="div ventas">
+
+            <div class="encabezado">
+                <h3>Ventas <button class="btnNuevaVenta">Nueva Venta</button></h3>
+                
+            </div>
+        
+            <table class="tabla-ventas">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Vendedora</th>
+                        <th>Sucursal</th>
+                        <th>Componentes</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaVentas"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--Venta modal agregar venta-->
+
+    <div class="container-modal agregar">
+
+        <div class="div modal">
+
+            <form class="form">
+
+                <h3>Agregar venta</h3>
+                <p>Vendedora</p>
+                <select id="vendedoras" class="selects  select-vendedora">
+                    <option value="Ada">Ada</option>
+                    <option value="Grace">Grace</option>
+                    <option value="Hedy">Hedy</option>
+                    <option value="Sheryl">Sheryl</option>
+                </select>
+
+                <p>Componentes</p>
+                <select id="componentes" class="selects multiple" multiple>
+                    <option value="Monitor GPRS 3000">Monitor GPRS 3000</option>
+                    <option value="Motherboard ASUS 1500">Motherboard ASUS 1500</option>
+                    <option value="Monitor ASC 543">Monitor ASC 543</option>
+                    <option value="Motherboard ASUS 1200">Motherboard ASUS 1200</option>
+                    <option value="Motherboard MZI">Motherboard MZI</option>
+                    <option value="HDD Toyiva">HDD Toyiva</option>
+                    <option value="HDD Wezter Dishital">HDD Wezter Dishital</option>
+                    <option value="RAM Quinston">RAM Quinston</option>
+                    <option value="RAM Quinston Fury">RAM Quinston Fury</option>
+                </select>
+
+                <p>Sucursal</p>
+                <select name="sucursal" class="selects  sede">
+                    <option value="Centro">Centro</option>
+                    <option value="Caballito">Caballito</option>
+                </select>
+
+                <p>Fecha</p>
+                <input type="date" id="fecha">
+
+                <div class="buttons">
+                    <button id="cancelar" class="btns">Cancelar</button>
+                    <button id="guardar" type="submit" class="btns guardar">Guardar</button>
+                </div>
+
+            </form>
+        
+        </div>        
+    </div>
+
+    <!--Ventana editar venta-->
+
+    <div class="container-modal editar">
+
+        <div class="div modal">
+
+            <form class="form">
+
+                <h3>Editar ventana</h3>
+                <p>Vendedora</p>
+                <select id="vendedoras" class="selects  select-seller">
+                    <option value="Ada">Ada</option>
+                    <option value="Grace">Grace</option>
+                    <option value="Hedy">Hedy</option>
+                    <option value="Sheryl">Sheryl</option>  
+                </select>
+
+                <p>Componentes</p>
+                <select id="componentes" class="selects multiple componenteSelect" multiple >
+                    <option value="Monitor GPRS 3000">Monitor GPRS 3000</option>
+                    <option value="Motherboard ASUS 1500">Motherboard ASUS 1500</option>
+                    <option value="Monitor ASC 543">Monitor ASC 543</option>
+                    <option value="Motherboard ASUS 1200">Motherboard ASUS 1200</option>
+                    <option value="Motherboard MZI">Motherboard MZI</option>
+                    <option value="HDD Toyiva">HDD Toyiva</option>
+                    <option value="HDD Wezter Dishital">HDD Wezter Dishital</option>
+                    <option value="RAM Quinston">RAM Quinston</option>
+                    <option value="RAM Quinston Fury">RAM Quinston Fury</option>
+                </select>
+
+                <p>Sucursal</p>
+                <select id="sucursal" class="selects  optionSucursal">
+                    <option value="Centro">Centro</option>
+                    <option value="Caballito"></option>
+                </select>
+
+                <p>Fecha</p>
+                <input type="date" id="datetime" class="selects">
+
+                <div class="buttons">
+                    <button id="cancelar" class="btns">Cancelar</button>
+                    <button id="editar" type="submit" class="btns editar">Editar</button>
+                </div> 
+            </form>
+        
+        </div>        
+    </div>
+
+    <!--Ventana Eliminar venta-->
+    <div class="container-modal eliminar">
+
+        <div class=" div modal">
+
+            <h3>Eliminar venta</h3>
+
+            <h1>Estas seguro?</h1>
+            <p>Esta accion no se puede revertir</p>
+
+            <div class="buttons">
+                <button id="cancelar" class="btns">Cancelar</button>
+                <button id="eliminar" type="submit" class="btns eliminar">Guardar</button>
+            </div> 
+            
+        </div>
+    </div>
+
+
+    <script src="ventas.js"></script>
+    <script src="js.js"></script>
+    <script src="jsdom.js"></script>   
+</body>
+</html>
