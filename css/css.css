@@ -1,93 +1,151 @@
 *{
-    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
 }
 body{
     background-color: rgb(245, 244, 244);
     font-family: Arial, Helvetica, sans-serif;
 }
+#general{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin: 1% auto 2%;
+    padding: 4%;
+    
+}
 h3{
-    color: white;
+    color: rgb(245, 244, 244);
     background-color: rgb(18, 18, 54);
     border-radius: 10px 10px 0px 0px;
     padding: 20px;
-    margin-top: 0px;   
+}
+.container{
+    background-color: rgb(249, 249, 249);
+    margin: 1% ;   
+}
+
+#sucursal{
+    width: 44%;
+}
+
+#reportes{
+    width: 44%;
+}
+
+#ventas{
+    width: 90%;
+}
+
+table{
+    width: 90%;
+    margin: 1% auto;
+}
+
+th, td, tr{
+    text-align: left;
+    border-bottom: 1px solid rgb(18, 18, 54);
+    padding: 2%;
+}
+
+.reportesP{
+    margin: 10px;
+}
+
+.divBtnVentas{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(18, 18, 54);
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+    color: rgb(249, 249, 249);
+    
+}
+.reporteEstrellas{
+    width: 90%;
+    margin: 1em auto;
+}
+
+#btnNuevaVenta{
+    background-color: rgb(249, 249, 249);
+    color: rgb(18, 18, 54);
+    padding: 0.8% 17px;
+    border: none;
+    border-radius: 10px;
+}
+
+.modal{
+    width: 25%;
+    background-color: rgb(249, 249, 249);
+    position: fixed;
+    top: 15%;
+    left: 40%;
+    margin: 0% auto;
+    border-radius: 10px;
+    color: rgb(18, 18, 54);
+    z-index: 102;
+}
+#formModal{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buttons{
+    text-align: right;
+    margin: 1%;
+}
+#fecha{
+    margin: 0px 23px 0px;
+    height: 35px;
+}
+input{
+    margin: 10px;
+}
+label{
+    width: 90%;
+    margin: 3% auto;
+    font-weight: 600;
+
+}
+select{
+    width: 90%;
+    margin: 1% auto;
 }
 h1{
-    margin-left: 10px;
+    margin: 10px;
+    font-size: x-large;
 }
 p{
     margin: 10px;
-    padding: 5px;    
 }
-.container{
-    display: flex;
-    margin: 50px;
-}
-.div{
-    background-color: white;
-    border-radius: 10px;
-}
-.sucursal-reporte{
-    width: 50%;
-    margin: 5px;
-}
-.ventas{
-    width: 100%;
-    margin: 3px;
-}
-.btnNuevaVenta{
-    float: right;
-    width: 150px;
-    height: 30px;
-    background-color: white;
-    border-radius: 8px;
-    border: none;
-    color: rgb(18, 18, 54);
-    font-weight: bold;
-    
-}
-table{
-    border: none;
-    width: 95%;
-    margin: auto
-}
-td, th{
-    border-bottom: 2px solid rgb(219, 218, 218);
-    text-align: left;
-    padding: 8px;
-    height: 25px;
-    font-weight: 600;
-}
-.container-modal{
-    display: flex;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+
+.fondo{
+    position: fixed;
+    top: 0%;
+    left: 0%;
     width: 100%;
     height: 100%;
-    background-color: rgb(0, 0, 0, 0.4);
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+    background-color: rgba(243, 242, 243, 0.381);
+    z-index: 101;
+}
+.ocultar{
     display: none;
 }
-.modal{
-    width: 400px;
-    margin: 10% auto;
+
+.btnedit{
+    background-color: inherit;
+    border: none;
+    padding: 2%;
+    margin: 1%;
+    cursor: pointer;
+    font-size: 1vw;
 }
-.selects{
-    margin-left: 15px;
-    width: 80%;
-    height: 40px;    
-}
-.componentes {
-    height: 80px;
-}
-.btns{
-    margin: 10px;
-}
-.btn{
-    margin: 2px;
-    height: 28px;
+.editar{
     color: rgb(18, 18, 54);
+}
+
+.eliminar{
+    color: rgb(223, 55, 55);
 }

@@ -38,4 +38,3 @@ const local = {
       { componente: "RAM Quinston Fury", precio: 230 }
     ]
   };
-
