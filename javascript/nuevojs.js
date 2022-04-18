@@ -6,7 +6,7 @@ const tablaSucursal = document.querySelector('#tablaSucursal')
 const datosVentasSucursal = () =>{
     tablaSucursal.innerHTML =""
     for (const sucursal of sucursales){
-        tablaSucursal.innerHTML += `<td>${sucursal}</td>`+`<td>$${ventasSucursal(sucursal)}<td>`
+        tablaSucursal.innerHTML += `<td>${sucursal}</td>`+`<td>$ ${ventasSucursal(sucursal)}<td>`
     }
 }
 datosVentasSucursal()
@@ -22,7 +22,7 @@ const cargaProductoEstrella = () =>{
 
 cargaProductoEstrella()
 
-const ventasVendedora = (nombre) =>{ 
+/*const ventasVendedora = (nombre) =>{ 
     return contadorVentas(ventasPorVendedora(nombre))
 }
 
@@ -35,11 +35,12 @@ const mejorVendedoraa = ()=> {
            acc = ventasVendedora(vendedora)
            masVendio = vendedora
     } 
-}return masVendio
+}
+return masVendio
 }
 //console.log(ventasPorVendedora("Grace"))
 //console.log(ventasVendedora("Grace"))
-//console.log(contadorVentas(ventasPorVendedora("Grace")))
+//console.log(contadorVentas(ventasPorVendedora("Grace")))*/
 
 
 const cargaMejorVendedora = () =>{
@@ -90,14 +91,18 @@ guardarVenta.addEventListener ('click', (e) =>{
     fondo.style.display = "none"
 
     saveData()
+    prueba()
     datosVentas()
+    iconoEditar()
+    iconoEliminar()
 
-    //Nose no lo toma, no tengo ni idea ya, es algo que ver con el de componentes que no funciona....
 })
 
 // Boton Editar
 
 const modalEditar = document.querySelector ('#modalEditar')
+
+let idIcono = ''
 
 const iconoEditar = () =>{
     const editar = document.querySelectorAll('.editar')
@@ -105,10 +110,32 @@ const iconoEditar = () =>{
         boton.addEventListener ('click', () =>{
             modalEditar.style.display ="block"
             fondo.style.display = "block"
+
+            idIcono = boton.getAttribute('id')
+
+            //console.log(idIcono)
+            editVentas(idIcono)
         })        
     })
 }
 iconoEditar()
+
+const guardarVentaEditar = document.querySelector('#guardarVentaEditar')
+
+guardarVentaEditar.addEventListener ('click', (e) =>{
+    e.preventDefault()
+
+    modalEditar.style.display = "none"
+    fondo.style.display = "none"
+
+    edit()
+    pruebaedit()
+    datosVentas()
+    iconoEditar()
+    iconoEliminar()
+})
+
+    
 
 /*editar.addEventListener('click', () =>{
     modalEditar.style.display = "block"
@@ -126,8 +153,8 @@ const iconoEliminar = () =>{
             modalEliminar.style.display = "block"
             fondo.style.display = "block"
 
-            let guardarId = boton.getAttribute("id");
-            btnEliminar.setAttribute("aceptarEliminar", guardarId);            
+            idIcono = boton.getAttribute('id')
+  
         })
     })
 }
@@ -136,20 +163,22 @@ iconoEliminar()
 const btnEliminar = document.querySelector('#btnEliminar')
 
 const aceptarEliminar = () =>{
+    
     const {ventas} = local
 
     modalEliminar.style.display = "none"
     fondo.style.display = "none"
 
-    ventas.forEach ((venta, index) =>{
-        if (index === btnEliminar.getAttribute('aceptarEliminar')){
-            ventas.splice(index, 1)
-            datosVentas()
-            limpiarTabla()
-        }
-    })
+   
+    ventas.splice(idIcono, 1)
+
+    datosVentas()
+    iconoEditar()
+    iconoEliminar()
+
 }
 btnEliminar.addEventListener('click', aceptarEliminar)
+
 
 // NO LAS ELIMINA
 
@@ -185,35 +214,53 @@ const parsearFecha = (fecha, dias) => {
     return fecha;
 }
 
-const limpiarTabla = () => {
-    tablaVentas.innerHTML = "";
-  };
+const parsearFecha2 = (date) =>{
+    var dd = (date.getDate() < 10 ? '0' : '') + date.getUTCDate();
+    var anio = date.getFullYear()
+    var mm = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
+              
+    return `${anio}-${mm}-${dd}`
+}
+
+
 
 // Modal Nueva Venta
 
 const selectVendedora = document.querySelector ('#selectVendedora')
-const selectComponentes = document.querySelectorAll ('#selectComponentes')
-const optionComponente = document.querySelectorAll('.optionComponente')
+const selectComponentes = document.querySelector ('#selectComponentes')
+//const optionComponente = document.querySelectorAll('.optionComponente')
 const selectSucursales = document.querySelector ('#selectSucursales')
 const selectFecha = document.querySelector ('#selectFecha')
 
+let resultado
+
 let saveData = () =>{
 
-    let resultado = []
+    resultado = []
+
+
+    for (let i = 0; i < selectComponentes.selectedOptions.length; i++){
+
+        resultado[i]=(selectComponentes.selectedOptions[i].value)
+
+
+
+    }
+    //console.log(selectComponentes.selectedOptions)
         
-    optionComponente.forEach(componente => {
+    /*optionComponente.forEach(componente => {
         if(componente.selected) {
             resultado.push(componente.value)
                 
             //NO ME LO TOMA
         
         };
-        //console.log(componente.selected)
-    })
+        console.log(resultado)
+    })*/
 
 
-    if (selectVendedora === "" || resultado.length === 0 || selectSucursales === "" || parsearFecha(new Date(selectFecha.value),1) === ""){
-    alert('Por favor complete todos los datos')   
+   /*  if (selectVendedora === "" || resultado.length > 0 || selectSucursales === "" || selectFecha.value === ""){
+   alert('Por favor complete todos los datos')  
         
     }else{
         // Push Nueva Venta
@@ -227,68 +274,96 @@ let saveData = () =>{
 
         }
         ventas.push(pushVenta)
-    }
+    } */
+
         
     
     //console.log(ventas)
 }
 
+const prueba = () =>{
+
+    if (selectVendedora === "" || resultado.length === 0 || selectSucursales === "" || selectFecha.value === ""){
+        alert('Por favor complete todos los datos')
+    }else{
+
+    let pushVenta = {
+
+        fecha: parsearFecha(new Date(selectFecha.value),1),
+        nombreVendedora: selectVendedora.value,
+        componentes: resultado,
+         sucursal: selectSucursales.value,
+
+    }
+    ventas.push(pushVenta)
+}
+}
 // Modal Editar venta
+
+let selectComponentesEditar = document.querySelector ('#selectComponentesEditar')
+let selectVendedoraEditar = document.querySelector ('#selectVendedoraEditar')
+let selectSucursalesEditar = document.querySelector ('#selectSucursalesEditar')
+let selectFechaEditar = document.querySelector('#selectFechaEditar')
+
+//console.log(selectComponentesEditar)
 
 const editVentas = (id) => {
 
-    for (const option of selectVendedora){
-        if (option.select === true){
-            ventas[id].nombreVendedora = option.value
+    for (const option of selectVendedoraEditar){
+        if (ventas[id].nombreVendedora === option.value){
+            option.selected = true
         }
     }
-    for (const option of selectSucursales){
-        if (option.select === true){
-            ventas[id].sucursal = option.value
+    for (const option of selectSucursalesEditar){
+        if (ventas[id].sucursal === option.value){
+            option.selected = true
         }
     }
-    for (const option of selectComponentes){
-        if (option.select === true){
-            ventas[id].componentes = option.value
+    for (const option of selectComponentesEditar){
+
+        for (const componente of ventas[id].componentes){
+
+            if (componente === option.value){
+             option.selected = true
+            }
         }
     }
-    selectFecha.value = `${parsearFecha(ventas[id].fecha)}`
+    selectFechaEditar.value = `${parsearFecha2(ventas[id].fecha)}`
 
 }
 
-let dataEdit = () =>{
+let resultadoEdit
 
-    let resultado = []
-        
-    optionComponente.forEach(componente => {
-        if(componente.selected) {
-            resultado.push(componente.value)
-                
-            //NO ME LO TOMA
-        
-        };
-        //console.log(componente.selected)
-    })
+let edit = () =>{
 
-    if (selectVendedora === "" || resultado.length === 0 || selectSucursales === "" || parsearFecha(new Date(selectFecha.value),1) === ""){
-    alert('Por favor complete todos los datos')   
-        
+    resultadoEdit = []
+
+
+    for (let i = 0; i < selectComponentesEditar.selectedOptions.length; i++){
+
+        resultadoEdit[i]=(selectComponentesEditar.selectedOptions[i].value)
+
+
+
+    }
+    
+}
+
+const pruebaedit = () =>{
+
+    if (selectVendedoraEditar === "" || resultadoEdit.length === 0 || selectSucursalesEditar === "" || selectFechaEditar.value === ""){
+        alert('Por favor complete todos los datos')
     }else{
 
-        let editarVenta = {
+    let pushVenta = {
 
-            fecha: parsearFecha(new Date(selectFecha),1),
-            nombreVendedora: selectVendedora,
-            componentes: resultado,
-            sucursal: selectSucursales,
+        fecha: parsearFecha(new Date(selectFechaEditar.value),1),
+        nombreVendedora: selectVendedoraEditar.value,
+        componentes: resultadoEdit,
+        sucursal: selectSucursalesEditar.value,
 
-        }
-        modalEditar.style.display ="none"
-        modalEliminar.style.display = "none"
-        ventas.push(editarVenta)
-        limpiarTabla()
     }
-        
-    
-    //console.log(ventas)
+    ventas[idIcono] = pushVenta
 }
+}
+
